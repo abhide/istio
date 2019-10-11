@@ -40,6 +40,8 @@ type IptablesConsumer interface {
 
 // IptablesBuilder is a higher level interface based on builder pattern.
 type IptablesBuilder interface {
+	NewChainV4(chain string, table string) IptablesBuilder
+	NewChainV6(chain string, table string) IptablesBuilder
 	IptablesProducer
 	IptablesConsumer
 }

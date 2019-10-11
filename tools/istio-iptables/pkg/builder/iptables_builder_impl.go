@@ -105,6 +105,24 @@ func (rb *IptablesBuilderImpl) BuildV6() []string {
 	return rules
 }
 
+func (rb *IptablesBuilderImpl) NewChainV4(chain string, table string) IptablesBuilder {
+	rb.rules.rulesv4 = append(rb.rules.rulesv4, &Rule{
+		chain:  chain,
+		table:  table,
+		params: []string{"-N", chain},
+	})
+	return rb
+}
+
+func (rb *IptablesBuilderImpl) NewChainV6(chain string, table string) IptablesBuilder {
+	rb.rules.rulesv6 = append(rb.rules.rulesv6, &Rule{
+		chain:  chain,
+		table:  table,
+		params: []string{"-N", chain},
+	})
+	return rb
+}
+
 func (rb *IptablesBuilderImpl) BuildV4Restore() string {
 	//TODO (abhide): implement this
 	return ""
