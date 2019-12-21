@@ -182,10 +182,9 @@
   "admin": {
     "access_log_path": "/dev/null",
     "address": {
-      "socket_address": {
-        "address": "{{ .localhost }}",
-        "port_value": {{ .config.ProxyAdminPort }}
-      }
+      "pipe": {
+	"path": "unix://var/lib/envoy_admin.sock"
+      }	      
     }
   },
   "dynamic_resources": {
